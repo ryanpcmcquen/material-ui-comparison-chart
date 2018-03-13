@@ -11,25 +11,24 @@ import {
 
 const data = [
     {
+        sku: 123,
         bladeLength: `6", 8", 9.5"`,
         totalLength: `12", 13", 15"`,
         fullTangValue: "N"
     },
     {
+        sku: 234,
         bladeLength: `8", 10"`,
         totalLength: `14", 16"`,
         fullTangValue: "Y"
     },
     {
+        sku: 345,
         bladeLength: `6", 8", 9.5"`,
         totalLength: `12", 13", 15"`,
         fullTangValue: "Y"
     }
 ];
-
-const restructuredData = Object.keys(data[0]).map(property =>
-    data.map(node => node[property])
-);
 
 const ComparisonTable = props => (
     <Paper>
@@ -45,15 +44,21 @@ const ComparisonTable = props => (
             <TableBody>
                 <TableRow>
                     <TableCell>Blade length</TableCell>
-                    <TableCell>{restructuredData[0]}</TableCell>
+                    <TableCell>{data[0].bladeLength}</TableCell>
+                    <TableCell>{data[1].bladeLength}</TableCell>
+                    <TableCell>{data[2].bladeLength}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell>Total length</TableCell>
-                    {restructuredData[1]}
+                    <TableCell>{data[0].totalLength}</TableCell>
+                    <TableCell>{data[1].totalLength}</TableCell>
+                    <TableCell>{data[2].totalLength}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell>Full Tang value</TableCell>
-                    {restructuredData[2]}
+                    <TableCell>{data[0].fullTangValue}</TableCell>
+                    <TableCell>{data[1].fullTangValue}</TableCell>
+                    <TableCell>{data[2].fullTangValue}</TableCell>
                 </TableRow>
             </TableBody>
         </Table>
