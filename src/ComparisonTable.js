@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
     Paper,
@@ -7,13 +7,13 @@ import {
     TableCell,
     TableHead,
     TableRow
-} from "material-ui";
+} from 'material-ui';
 
 import {
     miyabiEvolutionImage,
     miyabiKaizen2Image,
     wusthofClassicWideImage
-} from "./images";
+} from './images';
 
 const data = [
     {
@@ -21,27 +21,27 @@ const data = [
         image: miyabiKaizen2Image,
         bladeLength: `6", 8", 9.5"`,
         totalLength: `12", 13", 15"`,
-        fullTangValue: "N"
+        fullTangValue: 'N'
     },
     {
         name: "Miyabi Evolution Chef's Knife",
         image: miyabiEvolutionImage,
         bladeLength: `6", 8", 9.5"`,
         totalLength: `12", 13", 15"`,
-        fullTangValue: "Y"
+        fullTangValue: 'Y'
     },
     {
         name: "Wusthof Classic Wide Chef's Knife",
         image: wusthofClassicWideImage,
         bladeLength: `8", 10"`,
         totalLength: `14", 16"`,
-        fullTangValue: "Y"
+        fullTangValue: 'Y'
     }
 ];
 
 const imageStyles = {
-    width: "90px",
-    display: "block"
+    width: '90px',
+    display: 'block'
 };
 
 const ComparisonTable = props => (
