@@ -1,5 +1,4 @@
 import React from 'react';
-import queryParent from 'queryparent';
 
 import { Checkbox, FormControlLabel } from 'material-ui';
 
@@ -13,27 +12,20 @@ const toggleCheckbox = (productData, checked) => {
     };
 };
 
-const productCheckbox = {
-    sku: '2403251',
-    image: 'https://yogifil.la/50/50'
-};
-
 let CompareCheckbox = props => (
     <div>
-        <img alt={productCheckbox.sku} src={productCheckbox.image} />
+        <img alt={props.sku} src={props.image} style={{ width: '36px' }} />
         <br />
         <FormControlLabel
             control={
                 <Checkbox
-                    data-sku={productCheckbox.sku}
-                    data-image={productCheckbox.image}
+                    sku={props.sku}
+                    image={props.image}
                     onChange={(checkboxEvent, checked) => {
-                        checkboxEvent.persist();
-                        const productData = Object.assign(
-                            {},
-                            queryParent(checkboxEvent.target, '[data-sku]')
-                                .dataset
-                        );
+                        const productData = {
+                            image: props.image,
+                            sku: props.sku
+                        };
                         props.dispatch(toggleCheckbox(productData, checked));
                     }}
                 />

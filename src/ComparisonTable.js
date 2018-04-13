@@ -9,35 +9,7 @@ import {
     TableRow
 } from 'material-ui';
 
-import {
-    miyabiEvolutionImage,
-    miyabiKaizen2Image,
-    wusthofClassicWideImage
-} from './images';
-
-const data = [
-    {
-        name: "Miyabi Kaizen II Chef's Knife",
-        image: miyabiKaizen2Image,
-        bladeLength: `6", 8", 9.5"`,
-        totalLength: `12", 13", 15"`,
-        fullTangValue: 'N'
-    },
-    {
-        name: "Miyabi Evolution Chef's Knife",
-        image: miyabiEvolutionImage,
-        bladeLength: `6", 8", 9.5"`,
-        totalLength: `12", 13", 15"`,
-        fullTangValue: 'Y'
-    },
-    {
-        name: "Wusthof Classic Wide Chef's Knife",
-        image: wusthofClassicWideImage,
-        bladeLength: `8", 10"`,
-        totalLength: `14", 16"`,
-        fullTangValue: 'Y'
-    }
-];
+import data from './data';
 
 const imageStyles = {
     width: '90px',

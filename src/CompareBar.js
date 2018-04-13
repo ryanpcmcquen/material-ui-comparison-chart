@@ -22,7 +22,10 @@ let CompareBar = props => (
                                 <img
                                     alt={props.productData[0].sku}
                                     src={props.productData[0].image}
-                                    style={{ borderRadius: '50%' }}
+                                    style={{
+                                        borderRadius: '50%',
+                                        width: '50px'
+                                    }}
                                 />
                             )) || (
                             <Icon style={{ fontSize: 50 }}>cancel_icon</Icon>
@@ -39,7 +42,10 @@ let CompareBar = props => (
                                 <img
                                     alt={props.productData[1].sku}
                                     src={props.productData[1].image}
-                                    style={{ borderRadius: '50%' }}
+                                    style={{
+                                        borderRadius: '50%',
+                                        width: '50px'
+                                    }}
                                 />
                             )) || (
                             <Icon style={{ fontSize: 50 }}>cancel_icon</Icon>
@@ -56,7 +62,10 @@ let CompareBar = props => (
                                 <img
                                     alt={props.productData[2].sku}
                                     src={props.productData[2].image}
-                                    style={{ borderRadius: '50%' }}
+                                    style={{
+                                        borderRadius: '50%',
+                                        width: '50px'
+                                    }}
                                 />
                             )) || (
                             <Icon style={{ fontSize: 50 }}>cancel_icon</Icon>

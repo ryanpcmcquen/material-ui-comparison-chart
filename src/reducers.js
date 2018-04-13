@@ -12,13 +12,16 @@ const checkboxReducer = (state = {}, action) => {
                 checked: false
             };
         case 'TOGGLE_CHECKBOX':
-            // TODO:
-            // Push or remove from array based on checked status.
-            const productDataArray = [];
+            let productDataArray =
+                (state.productData && [...state.productData]) || [];
             if (action.checked) {
                 productDataArray.push(action.productData);
             } else {
-                productDataArray.filter(product => product.sku !== product.sku);
+                productDataArray = state.productData.filter(product => {
+                    return product.sku !== action.productData.sku
+                        ? product
+                        : false;
+                });
             }
             console.log(productDataArray);
 

@@ -5,6 +5,7 @@ import CompareBar from './CompareBar';
 import ComparisonTable from './ComparisonTable';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import data from './data';
 
 import reducers from './reducers';
 
@@ -22,7 +23,9 @@ const styles = {
 const App = () => (
     <Provider store={sltStore}>
         <div style={styles}>
-            <CompareCheckbox />
+            <CompareCheckbox sku={data[0].sku} image={data[0].image} />
+            <CompareCheckbox sku={data[1].sku} image={data[1].image} />
+            <CompareCheckbox sku={data[2].sku} image={data[2].image} />
             <CompareBar />
             <br />
             <br />
