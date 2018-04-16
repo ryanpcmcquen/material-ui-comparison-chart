@@ -23,7 +23,6 @@ const checkboxReducer = (state = {}, action) => {
                         : false;
                 });
             }
-            console.log(productDataArray);
 
             return {
                 ...state,

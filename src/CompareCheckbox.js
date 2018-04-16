@@ -19,14 +19,8 @@ let CompareCheckbox = props => (
         <FormControlLabel
             control={
                 <Checkbox
-                    sku={props.sku}
-                    image={props.image}
-                    onChange={(checkboxEvent, checked) => {
-                        const productData = {
-                            image: props.image,
-                            sku: props.sku
-                        };
-                        props.dispatch(toggleCheckbox(productData, checked));
+                    onChange={(event, checked) => {
+                        props.dispatch(toggleCheckbox(props, checked));
                     }}
                 />
             }

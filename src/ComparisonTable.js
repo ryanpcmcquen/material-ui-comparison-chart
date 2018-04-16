@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import {
     Paper,
@@ -9,49 +10,52 @@ import {
     TableRow
 } from 'material-ui';
 
-import data from './data';
-
 const imageStyles = {
     width: '90px',
     display: 'block'
 };
 
-const ComparisonTable = props => (
+// TODO:
+// Use the data model rather than hard coding attributes.
+let ComparisonTable = props => (
     <Paper>
         <Table>
             <TableHead>
                 <TableRow>
                     <TableCell>Products</TableCell>
-                    {data[0] && (
-                        <TableCell>
-                            <img
-                                alt={data[0].name}
-                                style={imageStyles}
-                                src={data[0].image}
-                            />
-                            {data[0].name}
-                        </TableCell>
-                    )}
-                    {data[1] && (
-                        <TableCell>
-                            <img
-                                alt={data[1].name}
-                                style={imageStyles}
-                                src={data[1].image}
-                            />
-                            {data[1].name}
-                        </TableCell>
-                    )}
-                    {data[2] && (
-                        <TableCell>
-                            <img
-                                alt={data[2].name}
-                                style={imageStyles}
-                                src={data[2].image}
-                            />
-                            {data[2].name}
-                        </TableCell>
-                    )}
+                    {props.productData &&
+                        props.productData[0] && (
+                            <TableCell>
+                                <img
+                                    alt={props.productData[0].name}
+                                    style={imageStyles}
+                                    src={props.productData[0].image}
+                                />
+                                {props.productData[0].name}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[1] && (
+                            <TableCell>
+                                <img
+                                    alt={props.productData[1].name}
+                                    style={imageStyles}
+                                    src={props.productData[1].image}
+                                />
+                                {props.productData[1].name}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[2] && (
+                            <TableCell>
+                                <img
+                                    alt={props.productData[2].name}
+                                    style={imageStyles}
+                                    src={props.productData[2].image}
+                                />
+                                {props.productData[2].name}
+                            </TableCell>
+                        )}
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -60,25 +64,74 @@ const ComparisonTable = props => (
                 </TableRow>
                 <TableRow>
                     <TableCell>Blade length</TableCell>
-                    {data[0] && <TableCell>{data[0].bladeLength}</TableCell>}
-                    {data[1] && <TableCell>{data[1].bladeLength}</TableCell>}
-                    {data[2] && <TableCell>{data[2].bladeLength}</TableCell>}
+                    {props.productData &&
+                        props.productData[0] && (
+                            <TableCell>
+                                {props.productData[0].bladeLength}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[1] && (
+                            <TableCell>
+                                {props.productData[1].bladeLength}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[2] && (
+                            <TableCell>
+                                {props.productData[2].bladeLength}
+                            </TableCell>
+                        )}
                 </TableRow>
                 <TableRow>
                     <TableCell>Total length</TableCell>
-                    {data[0] && <TableCell>{data[0].totalLength}</TableCell>}
-                    {data[1] && <TableCell>{data[1].totalLength}</TableCell>}
-                    {data[2] && <TableCell>{data[2].totalLength}</TableCell>}
+                    {props.productData &&
+                        props.productData[0] && (
+                            <TableCell>
+                                {props.productData[0].totalLength}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[1] && (
+                            <TableCell>
+                                {props.productData[1].totalLength}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[2] && (
+                            <TableCell>
+                                {props.productData[2].totalLength}
+                            </TableCell>
+                        )}
                 </TableRow>
                 <TableRow>
                     <TableCell>Full Tang value</TableCell>
-                    {data[0] && <TableCell>{data[0].fullTangValue}</TableCell>}
-                    {data[1] && <TableCell>{data[1].fullTangValue}</TableCell>}
-                    {data[2] && <TableCell>{data[2].fullTangValue}</TableCell>}
+                    {props.productData &&
+                        props.productData[0] && (
+                            <TableCell>
+                                {props.productData[0].fullTangValue}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[1] && (
+                            <TableCell>
+                                {props.productData[1].fullTangValue}
+                            </TableCell>
+                        )}
+                    {props.productData &&
+                        props.productData[2] && (
+                            <TableCell>
+                                {props.productData[2].fullTangValue}
+                            </TableCell>
+                        )}
                 </TableRow>
             </TableBody>
         </Table>
     </Paper>
 );
+
+ComparisonTable = connect((state, ownProps) => {
+    return { productData: state.checkboxReducer.productData, ...ownProps };
+})(ComparisonTable);
 
 export default ComparisonTable;

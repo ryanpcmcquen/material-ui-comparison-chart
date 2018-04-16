@@ -23,9 +23,10 @@ const styles = {
 const App = () => (
     <Provider store={sltStore}>
         <div style={styles}>
-            <CompareCheckbox sku={data[0].sku} image={data[0].image} />
-            <CompareCheckbox sku={data[1].sku} image={data[1].image} />
-            <CompareCheckbox sku={data[2].sku} image={data[2].image} />
+            <CompareCheckbox {...data[0]} />
+            <CompareCheckbox {...data[1]} />
+            <CompareCheckbox {...data[2]} />
+
             <CompareBar />
             <br />
             <br />

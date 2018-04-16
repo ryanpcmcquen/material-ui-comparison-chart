@@ -4,7 +4,6 @@ import {
     wusthofClassicWideImage
 } from './images';
 
-// TODO: Separate this data into its own file.
 const data = [
     {
         bladeLength: `6", 8", 9.5"`,
