@@ -23,7 +23,6 @@ let CompareBar = props => (
                                     alt={props.productData[0].sku}
                                     src={props.productData[0].image}
                                     style={{
-                                        borderRadius: '50%',
                                         width: '50px'
                                     }}
                                 />
@@ -43,7 +42,6 @@ let CompareBar = props => (
                                     alt={props.productData[1].sku}
                                     src={props.productData[1].image}
                                     style={{
-                                        borderRadius: '50%',
                                         width: '50px'
                                     }}
                                 />
@@ -63,7 +61,6 @@ let CompareBar = props => (
                                     alt={props.productData[2].sku}
                                     src={props.productData[2].image}
                                     style={{
-                                        borderRadius: '50%',
                                         width: '50px'
                                     }}
                                 />
