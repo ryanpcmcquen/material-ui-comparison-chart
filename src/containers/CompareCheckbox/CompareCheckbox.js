@@ -1,26 +1,28 @@
 import React from 'react';
-
-import { Checkbox, FormControlLabel } from 'material-ui';
-
 import { connect } from 'react-redux';
 
-const toggleCheckbox = (productData, checked) => {
-    return {
-        type: 'TOGGLE_CHECKBOX',
-        productData: productData,
-        checked: checked
-    };
-};
+import { Checkbox, FormControlLabel } from 'material-ui';
+import { actionToggleCheckbox } from '../../actions/checkboxActions';
+
+// TEMP:
+// We will grab this data via a network request.
+import data from '../../data';
 
 let CompareCheckbox = props => (
     <div>
-        <img alt={props.sku} src={props.image} style={{ width: '36px' }} />
+        <img
+            alt={props.sku}
+            src={props.productData.image}
+            style={{ width: '36px' }}
+        />
         <br />
         <FormControlLabel
             control={
                 <Checkbox
                     onChange={(event, checked) => {
-                        props.dispatch(toggleCheckbox(props, checked));
+                        props.dispatch(
+                            actionToggleCheckbox(props.productData, checked)
+                        );
                     }}
                 />
             }
@@ -32,6 +34,7 @@ let CompareCheckbox = props => (
 CompareCheckbox = connect((state, ownProps) => {
     return {
         checked: ownProps.value,
+        productData: data[ownProps.sku],
         ...ownProps
     };
 })(CompareCheckbox);

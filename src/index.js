@@ -1,13 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import CompareCheckbox from './CompareCheckbox';
-import CompareBar from './CompareBar';
-import ComparisonTable from './ComparisonTable';
+import CompareCheckbox from './containers/CompareCheckbox/CompareCheckbox';
+import CompareBar from './containers/CompareBar/CompareBar';
+import ComparisonTable from './containers/ComparisonTable/ComparisonTable';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import data from './data';
 
-import reducers from './reducers';
+import reducers from './reducers/sltReducers';
 
 const sltStore = createStore(
     reducers,
@@ -23,9 +22,9 @@ const styles = {
 const App = () => (
     <Provider store={sltStore}>
         <div style={styles}>
-            <CompareCheckbox {...data[0]} />
-            <CompareCheckbox {...data[1]} />
-            <CompareCheckbox {...data[2]} />
+            <CompareCheckbox sku="2403251" />
+            <CompareCheckbox sku="1251230" />
+            <CompareCheckbox sku="227496" />
 
             <CompareBar />
             <br />

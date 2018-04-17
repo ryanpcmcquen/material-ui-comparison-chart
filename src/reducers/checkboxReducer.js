@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 const checkboxReducer = (state = {}, action) => {
     switch (action.type) {
         case 'CHECK_CHECKBOX':
@@ -34,9 +33,4 @@ const checkboxReducer = (state = {}, action) => {
     }
 };
 
-// This combines all reducers, so they can be modular:
-const reducers = combineReducers({
-    checkboxReducer
-});
-
-export default reducers;
+export default checkboxReducer;

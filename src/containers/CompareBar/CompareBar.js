@@ -1,13 +1,7 @@
 import React from 'react';
 
-import {
-    BottomNavigation,
-    BottomNavigationAction,
-    Card,
-    Icon,
-    Paper
-} from 'material-ui';
-
+import { BottomNavigation, BottomNavigationAction, Paper } from 'material-ui';
+import { Cancel as CancelIcon } from 'material-ui-icons';
 import { connect } from 'react-redux';
 
 let CompareBar = props => (
@@ -26,9 +20,7 @@ let CompareBar = props => (
                                         width: '50px'
                                     }}
                                 />
-                            )) || (
-                            <Icon style={{ fontSize: 50 }}>cancel_icon</Icon>
-                        )}
+                            )) || <CancelIcon style={{ fontSize: 50 }} />}
                     </React.Fragment>
                 }
             />
@@ -45,9 +37,7 @@ let CompareBar = props => (
                                         width: '50px'
                                     }}
                                 />
-                            )) || (
-                            <Icon style={{ fontSize: 50 }}>cancel_icon</Icon>
-                        )}
+                            )) || <CancelIcon style={{ fontSize: 50 }} />}
                     </React.Fragment>
                 }
             />
@@ -64,9 +54,7 @@ let CompareBar = props => (
                                         width: '50px'
                                     }}
                                 />
-                            )) || (
-                            <Icon style={{ fontSize: 50 }}>cancel_icon</Icon>
-                        )}
+                            )) || <CancelIcon style={{ fontSize: 50 }} />}
                     </React.Fragment>
                 }
             />

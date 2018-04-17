@@ -4,8 +4,8 @@ import {
     wusthofClassicWideImage
 } from './images';
 
-const data = [
-    {
+const data = {
+    2403251: {
         bladeLength: `6", 8", 9.5"`,
         fullTangValue: 'N',
         image: miyabiKaizen2Image,
@@ -13,7 +13,7 @@ const data = [
         sku: 2403251,
         totalLength: `12", 13", 15"`
     },
-    {
+    1251230: {
         bladeLength: `6", 8", 9.5"`,
         fullTangValue: 'Y',
         image: miyabiEvolutionImage,
@@ -21,7 +21,7 @@ const data = [
         sku: 1251230,
         totalLength: `12", 13", 15"`
     },
-    {
+    227496: {
         bladeLength: `8", 10"`,
         fullTangValue: 'Y',
         image: wusthofClassicWideImage,
@@ -29,6 +29,6 @@ const data = [
         sku: 227496,
         totalLength: `14", 16"`
     }
-];
+};
 
 export default data;
