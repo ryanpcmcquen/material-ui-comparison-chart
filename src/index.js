@@ -29,7 +29,7 @@ const App = () => (
             <CompareBar />
             <br />
             <br />
-            <ComparisonTable />
+            <ComparisonTable type="cutlery" />
         </div>
     </Provider>
 );
