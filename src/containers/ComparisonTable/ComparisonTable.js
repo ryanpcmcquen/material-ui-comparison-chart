@@ -19,6 +19,7 @@ const tableModels = {
     cutlery: {
         Dimensions: ['Blade length', 'Total length', 'Full Tang value']
     },
+    // This is just an example of another type:
     appliance: {
         Features: ['Blends', 'Blade type']
     }
