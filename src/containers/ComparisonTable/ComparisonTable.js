@@ -33,13 +33,6 @@ let ComparisonTable = props => {
     const attributes =
         tableModels[props.type][Object.keys(tableModels[props.type])[0]];
 
-    const attributeZero =
-        tableModels[props.type][Object.keys(tableModels[props.type])[0]][0];
-    const attributeOne =
-        tableModels[props.type][Object.keys(tableModels[props.type])[0]][1];
-    const attributeTwo =
-        tableModels[props.type][Object.keys(tableModels[props.type])[0]][2];
-
     return (
         <Paper>
             <Table>
