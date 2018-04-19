@@ -30,6 +30,9 @@ const tableModels = {
 let ComparisonTable = props => {
     const sectionZero = Object.keys(tableModels[props.type])[0];
 
+    const attributes =
+        tableModels[props.type][Object.keys(tableModels[props.type])[0]];
+
     const attributeZero =
         tableModels[props.type][Object.keys(tableModels[props.type])[0]][0];
     const attributeOne =
@@ -63,42 +66,22 @@ let ComparisonTable = props => {
                     <TableRow>
                         <TableCell>{sectionZero}</TableCell>
                     </TableRow>
-                    <TableRow>
-                        <TableCell>{attributeZero}</TableCell>
-                        {props.productData &&
-                            Object.keys(props.productData).map((sku, index) => {
-                                const product = props.productData[sku];
-                                return (
-                                    <TableCell>
-                                        {product[attributeZero]}
-                                    </TableCell>
-                                );
-                            })}
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>{attributeOne}</TableCell>
-                        {props.productData &&
-                            Object.keys(props.productData).map((sku, index) => {
-                                const product = props.productData[sku];
-                                return (
-                                    <TableCell>
-                                        {product[attributeOne]}
-                                    </TableCell>
-                                );
-                            })}
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>{attributeTwo}</TableCell>
-                        {props.productData &&
-                            Object.keys(props.productData).map((sku, index) => {
-                                const product = props.productData[sku];
-                                return (
-                                    <TableCell>
-                                        {product[attributeTwo]}
-                                    </TableCell>
-                                );
-                            })}
-                    </TableRow>
+                    {attributes.map(attribute => (
+                        <TableRow>
+                            <TableCell>{attribute}</TableCell>
+                            {props.productData &&
+                                Object.keys(props.productData).map(
+                                    (sku, index) => {
+                                        const product = props.productData[sku];
+                                        return (
+                                            <TableCell>
+                                                {product[attribute]}
+                                            </TableCell>
+                                        );
+                                    }
+                                )}
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </Paper>
