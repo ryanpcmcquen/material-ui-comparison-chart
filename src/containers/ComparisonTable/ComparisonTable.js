@@ -152,7 +152,10 @@ let ComparisonTable = props => {
 };
 
 ComparisonTable = connect((state, ownProps) => {
-    return { productData: state.checkboxReducer.productData, ...ownProps };
+    return {
+        productData: state.productComparisonReducer.productData,
+        ...ownProps
+    };
 })(ComparisonTable);
 
 export default ComparisonTable;

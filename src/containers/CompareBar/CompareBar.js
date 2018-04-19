@@ -1,7 +1,16 @@
 import React from 'react';
 
-import { BottomNavigation, BottomNavigationAction, Paper } from 'material-ui';
-import { Cancel as CancelIcon } from 'material-ui-icons';
+import {
+    Badge,
+    BottomNavigation,
+    BottomNavigationAction,
+    Paper
+} from 'material-ui';
+import { AddBox as AddBoxIcon, Cancel as CancelIcon } from 'material-ui-icons';
+import {
+    actionRemoveProduct,
+    actionUncheckCheckbox
+} from '../../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
 let CompareBar = props => (
@@ -13,14 +22,26 @@ let CompareBar = props => (
                     <React.Fragment>
                         {(props.productData &&
                             props.productData[0] && (
-                                <img
-                                    alt={props.productData[0].sku}
-                                    src={props.productData[0].image}
-                                    style={{
-                                        width: '50px'
+                                <Badge
+                                    badgeContent={<CancelIcon />}
+                                    onClick={(event, checked) => {
+                                        props.dispatch(
+                                            actionRemoveProduct(
+                                                props.productData[0]
+                                            )
+                                        );
                                     }}
-                                />
-                            )) || <CancelIcon style={{ fontSize: 50 }} />}
+                                >
+                                    <img
+                                        alt={props.productData[0].sku}
+                                        src={props.productData[0].image}
+                                        style={{
+                                            height: '50px',
+                                            width: '50px'
+                                        }}
+                                    />
+                                </Badge>
+                            )) || <AddBoxIcon style={{ fontSize: 50 }} />}
                     </React.Fragment>
                 }
             />
@@ -30,14 +51,26 @@ let CompareBar = props => (
                     <React.Fragment>
                         {(props.productData &&
                             props.productData[1] && (
-                                <img
-                                    alt={props.productData[1].sku}
-                                    src={props.productData[1].image}
-                                    style={{
-                                        width: '50px'
+                                <Badge
+                                    badgeContent={<CancelIcon />}
+                                    onClick={(event, checked) => {
+                                        props.dispatch(
+                                            actionRemoveProduct(
+                                                props.productData[1]
+                                            )
+                                        );
                                     }}
-                                />
-                            )) || <CancelIcon style={{ fontSize: 50 }} />}
+                                >
+                                    <img
+                                        alt={props.productData[1].sku}
+                                        src={props.productData[1].image}
+                                        style={{
+                                            height: '50px',
+                                            width: '50px'
+                                        }}
+                                    />
+                                </Badge>
+                            )) || <AddBoxIcon style={{ fontSize: 50 }} />}
                     </React.Fragment>
                 }
             />
@@ -47,14 +80,26 @@ let CompareBar = props => (
                     <React.Fragment>
                         {(props.productData &&
                             props.productData[2] && (
-                                <img
-                                    alt={props.productData[2].sku}
-                                    src={props.productData[2].image}
-                                    style={{
-                                        width: '50px'
+                                <Badge
+                                    badgeContent={<CancelIcon />}
+                                    onClick={(event, checked) => {
+                                        props.dispatch(
+                                            actionRemoveProduct(
+                                                props.productData[2]
+                                            )
+                                        );
                                     }}
-                                />
-                            )) || <CancelIcon style={{ fontSize: 50 }} />}
+                                >
+                                    <img
+                                        alt={props.productData[2].sku}
+                                        src={props.productData[2].image}
+                                        style={{
+                                            height: '50px',
+                                            width: '50px'
+                                        }}
+                                    />
+                                </Badge>
+                            )) || <AddBoxIcon style={{ fontSize: 50 }} />}
                     </React.Fragment>
                 }
             />
@@ -63,7 +108,10 @@ let CompareBar = props => (
 );
 
 CompareBar = connect((state, ownProps) => {
-    return { productData: state.checkboxReducer.productData, ...ownProps };
+    return {
+        productData: state.productComparisonReducer.productData,
+        ...ownProps
+    };
 })(CompareBar);
 
 export default CompareBar;

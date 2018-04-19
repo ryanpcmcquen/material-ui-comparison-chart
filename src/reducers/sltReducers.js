@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import checkboxReducer from './checkboxReducer';
+import productComparisonReducer from './productComparisonReducer';
 
 // This combines all reducers, so they can be modular:
 const sltReducers = combineReducers({
-    checkboxReducer
+    productComparisonReducer
 });
 
 export default sltReducers;
