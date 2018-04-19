@@ -12,6 +12,7 @@ import {
     actionUncheckCheckbox
 } from '../../actions/productComparisonActions';
 import { connect } from 'react-redux';
+import queryParent from 'queryparent';
 
 let CompareBar = props => (
     <Paper style={{ paddingBottom: '24px' }}>
@@ -20,14 +21,25 @@ let CompareBar = props => (
                 label="Item #1"
                 icon={
                     <React.Fragment>
-                        {console.log(props.productData)}
                         {(props.productData &&
                             props.productData[
                                 Object.keys(props.productData)[0]
                             ] && (
                                 <Badge
+                                    data-sku={
+                                        props.productData[
+                                            Object.keys(props.productData)[0]
+                                        ].sku
+                                    }
                                     badgeContent={<CancelIcon />}
                                     onClick={(event, checked) => {
+                                        console.log(
+                                            props.productData[
+                                                Object.keys(
+                                                    props.productData
+                                                )[0]
+                                            ]
+                                        );
                                         props.dispatch(
                                             actionRemoveProduct(
                                                 props.productData[
@@ -37,12 +49,6 @@ let CompareBar = props => (
                                                 ]
                                             )
                                         );
-
-                                        // TODO:
-                                        // Uncheck the checkbox here.
-                                        // props.dispatch(
-                                        // actionUncheckCheckbox(props)
-                                        // )
                                     }}
                                 >
                                     <img

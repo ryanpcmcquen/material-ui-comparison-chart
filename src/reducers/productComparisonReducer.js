@@ -2,6 +2,13 @@ const productComparisonReducer = (state = {}, action) => {
     let productData = (state.productData && { ...state.productData }) || {};
 
     switch (action.type) {
+        case 'REMOVE_PRODUCT':
+            delete productData[action.productData.sku];
+            return {
+                ...state,
+                productData: productData
+            };
+
         case 'TOGGLE_CHECKBOX':
             if (action.checked) {
                 productData[action.productData.sku] = action.productData;
@@ -10,13 +17,6 @@ const productComparisonReducer = (state = {}, action) => {
                 delete productData[action.productData.sku];
             }
 
-            return {
-                ...state,
-                productData: productData
-            };
-
-        case 'REMOVE_PRODUCT':
-            delete productData[action.productData.sku];
             return {
                 ...state,
                 productData: productData

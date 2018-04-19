@@ -30,12 +30,15 @@ class CompareCheckbox extends React.Component {
                                 );
                             }}
                             checked={
-                                this.props.sku &&
-                                this.props.store &&
-                                this.props.store.productData &&
-                                this.props.store.productData[this.props.sku] &&
-                                this.props.store.productData[this.props.sku]
-                                    .checked
+                                (this.props.sku &&
+                                    this.props.store &&
+                                    this.props.store.productData &&
+                                    this.props.store.productData[
+                                        this.props.sku
+                                    ] &&
+                                    this.props.store.productData[this.props.sku]
+                                        .checked) ||
+                                false
                             }
                         />
                     }
