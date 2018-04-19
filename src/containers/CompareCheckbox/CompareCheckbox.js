@@ -61,6 +61,7 @@ class CompareCheckbox extends React.Component {
                                 this.props.state.productComparisonReducer
                                     .checked
                             }
+
                         />
                     }
                     label="Compare"

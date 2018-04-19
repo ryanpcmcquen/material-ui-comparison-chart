@@ -30,6 +30,10 @@ let CompareBar = props => (
                                                 props.productData[0]
                                             )
                                         );
+
+                                        // TODO:
+                                        // Uncheck the checkbox here.
+
                                     }}
                                 >
                                     <img
