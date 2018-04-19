@@ -7,10 +7,7 @@ import {
     Paper
 } from 'material-ui';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from 'material-ui-icons';
-import {
-    actionRemoveProduct,
-    actionUncheckCheckbox
-} from '../../actions/productComparisonActions';
+import { actionRemoveProduct } from '../../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
 let CompareBar = props => (

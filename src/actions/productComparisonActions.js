@@ -9,9 +9,4 @@ const actionToggleCheckbox = (productData, checked) => ({
     checked: checked
 });
 
-const actionUncheckCheckbox = sku => ({
-    type: 'UNCHECK_CHECKBOX',
-    sku: sku
-});
-
-export { actionRemoveProduct, actionToggleCheckbox, actionUncheckCheckbox };
+export { actionRemoveProduct, actionToggleCheckbox };
