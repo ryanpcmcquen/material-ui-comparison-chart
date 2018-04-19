@@ -20,25 +20,46 @@ let CompareBar = props => (
                 label="Item #1"
                 icon={
                     <React.Fragment>
+                        {console.log(props.productData)}
                         {(props.productData &&
-                            props.productData[0] && (
+                            props.productData[
+                                Object.keys(props.productData)[0]
+                            ] && (
                                 <Badge
                                     badgeContent={<CancelIcon />}
                                     onClick={(event, checked) => {
                                         props.dispatch(
                                             actionRemoveProduct(
-                                                props.productData[0]
+                                                props.productData[
+                                                    Object.keys(
+                                                        props.productData
+                                                    )[0]
+                                                ]
                                             )
                                         );
 
                                         // TODO:
                                         // Uncheck the checkbox here.
-
+                                        // props.dispatch(
+                                        // actionUncheckCheckbox(props)
+                                        // )
                                     }}
                                 >
                                     <img
-                                        alt={props.productData[0].sku}
-                                        src={props.productData[0].image}
+                                        alt={
+                                            props.productData[
+                                                Object.keys(
+                                                    props.productData
+                                                )[0]
+                                            ].sku
+                                        }
+                                        src={
+                                            props.productData[
+                                                Object.keys(
+                                                    props.productData
+                                                )[0]
+                                            ].image
+                                        }
                                         style={{
                                             height: '50px',
                                             width: '50px'

@@ -1,42 +1,25 @@
 const productComparisonReducer = (state = {}, action) => {
-    let productDataArray = (state.productData && [...state.productData]) || [];
+    let productData = (state.productData && { ...state.productData }) || {};
 
     switch (action.type) {
-        case 'CHECK_CHECKBOX':
-            return {
-                ...state,
-                checked: true
-            };
-        case 'UNCHECK_CHECKBOX':
-            return {
-                ...state,
-                checked: false
-            };
         case 'TOGGLE_CHECKBOX':
             if (action.checked) {
-                productDataArray.push(action.productData);
+                productData[action.productData.sku] = action.productData;
+                productData[action.productData.sku].checked = action.checked;
             } else {
-                productDataArray = state.productData.filter(
-                    product =>
-                        product.sku === action.productData.sku ? false : product
-                );
+                delete productData[action.productData.sku];
             }
 
             return {
                 ...state,
-                checked: action.checked,
-                productData: productDataArray
+                productData: productData
             };
 
         case 'REMOVE_PRODUCT':
-            productDataArray = state.productData.filter(
-                product =>
-                    product.sku === action.productData.sku ? false : product
-            );
+            delete productData[action.productData.sku];
             return {
                 ...state,
-                checked: false,
-                productData: productDataArray
+                productData: productData
             };
 
         default:

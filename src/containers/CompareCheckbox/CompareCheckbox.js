@@ -22,30 +22,6 @@ class CompareCheckbox extends React.Component {
                     control={
                         <Checkbox
                             onChange={(event, checked) => {
-                                // console.log(event.target.checked);
-                                // console.log(props.sku);
-                                // console.log(
-                                //     this.props.state.productComparisonReducer
-                                // );
-                                // this.setState((prevState, props) => {
-                                //     return {
-                                //         checked:
-                                //             this.props.currentProducts &&
-                                //             this.props.currentProducts.reduce(
-                                //                 (bool, product) => {
-                                //                     // console.log(props.sku);
-                                //                     return (
-                                //                         product.sku ===
-                                //                             this.props.sku &&
-                                //                         product.checked
-                                //                     );
-                                //                 },
-                                //                 false
-                                //             ),
-                                //         ...prevState
-                                //     };
-                                // });
-
                                 this.props.dispatch(
                                     actionToggleCheckbox(
                                         this.props.productData,
@@ -54,14 +30,13 @@ class CompareCheckbox extends React.Component {
                                 );
                             }}
                             checked={
-                                console.log(
-                                    this.props.state.productComparisonReducer
-                                        .checked
-                                ) &&
-                                this.props.state.productComparisonReducer
+                                this.props.sku &&
+                                this.props.store &&
+                                this.props.store.productData &&
+                                this.props.store.productData[this.props.sku] &&
+                                this.props.store.productData[this.props.sku]
                                     .checked
                             }
-
                         />
                     }
                     label="Compare"
@@ -73,7 +48,7 @@ class CompareCheckbox extends React.Component {
 
 CompareCheckbox = connect((state, ownProps) => {
     return {
-        state: state,
+        store: state.productComparisonReducer,
         checked: ownProps.value,
         productData: data[ownProps.sku],
         currentProducts: state.productComparisonReducer.productData,
