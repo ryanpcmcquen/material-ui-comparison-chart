@@ -44,38 +44,19 @@ let ComparisonTable = props => {
                     <TableRow>
                         <TableCell>Products</TableCell>
                         {props.productData &&
-                            props.productData[0] && (
-                                <TableCell>
-                                    <img
-                                        alt={props.productData[0].name}
-                                        style={imageStyles}
-                                        src={props.productData[0].image}
-                                    />
-                                    {props.productData[0].name}
-                                </TableCell>
-                            )}
-                        {props.productData &&
-                            props.productData[1] && (
-                                <TableCell>
-                                    <img
-                                        alt={props.productData[1].name}
-                                        style={imageStyles}
-                                        src={props.productData[1].image}
-                                    />
-                                    {props.productData[1].name}
-                                </TableCell>
-                            )}
-                        {props.productData &&
-                            props.productData[2] && (
-                                <TableCell>
-                                    <img
-                                        alt={props.productData[2].name}
-                                        style={imageStyles}
-                                        src={props.productData[2].image}
-                                    />
-                                    {props.productData[2].name}
-                                </TableCell>
-                            )}
+                            Object.keys(props.productData).map((sku, index) => {
+                                const product = props.productData[sku];
+                                return (
+                                    <TableCell>
+                                        <img
+                                            alt={product.name}
+                                            style={imageStyles}
+                                            src={product.image}
+                                        />
+                                        {product.name}
+                                    </TableCell>
+                                );
+                            })}
                     </TableRow>
                 </TableHead>
                 <TableBody>

@@ -12,128 +12,59 @@ import {
     actionUncheckCheckbox
 } from '../../actions/productComparisonActions';
 import { connect } from 'react-redux';
-import queryParent from 'queryparent';
 
 let CompareBar = props => (
     <Paper style={{ paddingBottom: '24px' }}>
         <BottomNavigation showLabels>
-            <BottomNavigationAction
-                label="Item #1"
-                icon={
-                    <React.Fragment>
-                        {(props.productData &&
-                            props.productData[
-                                Object.keys(props.productData)[0]
-                            ] && (
-                                <Badge
-                                    data-sku={
-                                        props.productData[
-                                            Object.keys(props.productData)[0]
-                                        ].sku
-                                    }
-                                    badgeContent={<CancelIcon />}
-                                    onClick={(event, checked) => {
-                                        console.log(
-                                            props.productData[
-                                                Object.keys(
-                                                    props.productData
-                                                )[0]
-                                            ]
-                                        );
-                                        props.dispatch(
-                                            actionRemoveProduct(
-                                                props.productData[
-                                                    Object.keys(
-                                                        props.productData
-                                                    )[0]
-                                                ]
-                                            )
-                                        );
-                                    }}
-                                >
-                                    <img
-                                        alt={
-                                            props.productData[
-                                                Object.keys(
-                                                    props.productData
-                                                )[0]
-                                            ].sku
-                                        }
-                                        src={
-                                            props.productData[
-                                                Object.keys(
-                                                    props.productData
-                                                )[0]
-                                            ].image
-                                        }
-                                        style={{
-                                            height: '50px',
-                                            width: '50px'
-                                        }}
-                                    />
-                                </Badge>
-                            )) || <AddBoxIcon style={{ fontSize: 50 }} />}
-                    </React.Fragment>
-                }
-            />
-            <BottomNavigationAction
-                label="Item #2"
-                icon={
-                    <React.Fragment>
-                        {(props.productData &&
-                            props.productData[1] && (
-                                <Badge
-                                    badgeContent={<CancelIcon />}
-                                    onClick={(event, checked) => {
-                                        props.dispatch(
-                                            actionRemoveProduct(
-                                                props.productData[1]
-                                            )
-                                        );
-                                    }}
-                                >
-                                    <img
-                                        alt={props.productData[1].sku}
-                                        src={props.productData[1].image}
-                                        style={{
-                                            height: '50px',
-                                            width: '50px'
-                                        }}
-                                    />
-                                </Badge>
-                            )) || <AddBoxIcon style={{ fontSize: 50 }} />}
-                    </React.Fragment>
-                }
-            />
-            <BottomNavigationAction
-                label="Item #3"
-                icon={
-                    <React.Fragment>
-                        {(props.productData &&
-                            props.productData[2] && (
-                                <Badge
-                                    badgeContent={<CancelIcon />}
-                                    onClick={(event, checked) => {
-                                        props.dispatch(
-                                            actionRemoveProduct(
-                                                props.productData[2]
-                                            )
-                                        );
-                                    }}
-                                >
-                                    <img
-                                        alt={props.productData[2].sku}
-                                        src={props.productData[2].image}
-                                        style={{
-                                            height: '50px',
-                                            width: '50px'
-                                        }}
-                                    />
-                                </Badge>
-                            )) || <AddBoxIcon style={{ fontSize: 50 }} />}
-                    </React.Fragment>
-                }
-            />
+            {(props.productData &&
+                Object.keys(props.productData).map((sku, index) => {
+                    const product = props.productData[sku];
+                    return (
+                        <BottomNavigationAction
+                            key={index}
+                            label={`Item #${index + 1}`}
+                            icon={
+                                <React.Fragment>
+                                    {(
+                                        <Badge
+                                            data-sku={sku}
+                                            badgeContent={<CancelIcon />}
+                                            onClick={(event, checked) => {
+                                                props.dispatch(
+                                                    actionRemoveProduct(product)
+                                                );
+                                            }}
+                                        >
+                                            <img
+                                                alt={sku}
+                                                src={product.image}
+                                                style={{
+                                                    height: '50px',
+                                                    width: '50px'
+                                                }}
+                                            />
+                                        </Badge>
+                                    ) || (
+                                        <AddBoxIcon style={{ fontSize: 50 }} />
+                                    )}
+                                </React.Fragment>
+                            }
+                        />
+                    );
+                })) || (
+                <React.Fragment>
+                    <BottomNavigationAction
+                        icon={<AddBoxIcon style={{ fontSize: 50 }} />}
+                    />
+
+                    <BottomNavigationAction
+                        icon={<AddBoxIcon style={{ fontSize: 50 }} />}
+                    />
+                    <BottomNavigationAction
+                        icon={<AddBoxIcon style={{ fontSize: 50 }} />}
+                    />
+                </React.Fragment>
+            )}
         </BottomNavigation>
     </Paper>
 );
