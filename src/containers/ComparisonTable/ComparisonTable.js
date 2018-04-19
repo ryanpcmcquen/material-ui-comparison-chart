@@ -19,6 +19,7 @@ const tableModels = {
     cutlery: {
         Dimensions: ['Blade length', 'Total length', 'Full Tang value']
     },
+    // This is just an example of another type:
     appliance: {
         Features: ['Blends', 'Blade type']
     }
@@ -151,7 +152,10 @@ let ComparisonTable = props => {
 };
 
 ComparisonTable = connect((state, ownProps) => {
-    return { productData: state.checkboxReducer.productData, ...ownProps };
+    return {
+        productData: state.productComparisonReducer.productData,
+        ...ownProps
+    };
 })(ComparisonTable);
 
 export default ComparisonTable;
