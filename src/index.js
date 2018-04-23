@@ -1,16 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import CompareCheckbox from './containers/CompareCheckbox/CompareCheckbox';
-import CompareBar from './containers/CompareBar/CompareBar';
-import ComparisonTable from './containers/ComparisonTable/ComparisonTable';
+import CompareCheckbox from './CompareCheckbox/CompareCheckbox';
+import CompareBar from './CompareBar/CompareBar';
+import ComparisonTable from './ComparisonTable/ComparisonTable';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import reducers from './reducers/sltReducers';
+import sltReducers from './reducers/sltReducers';
 
 const sltStore = createStore(
-    reducers,
-    // Enable DevTools:
+    sltReducers,
+    // Enable DevTools, switch to localStorage on Prod:
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
@@ -25,8 +25,10 @@ const App = () => (
             <CompareCheckbox sku="2403251" />
             <CompareCheckbox sku="1251230" />
             <CompareCheckbox sku="227496" />
-
-            <CompareBar />
+            {
+                // TODO: Take number of items that can be compared.
+            }
+            <CompareBar numberOfItems={3} />
             <br />
             <br />
             <ComparisonTable type="cutlery" />

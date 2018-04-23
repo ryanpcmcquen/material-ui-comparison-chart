@@ -1,11 +1,11 @@
-const actionRemoveProduct = productData => ({
+const actionRemoveProduct = sku => ({
     type: 'REMOVE_PRODUCT',
-    productData: productData
+    sku: sku
 });
 
-const actionToggleCheckbox = (productData, checked) => ({
+const actionToggleCheckbox = (sku, checked) => ({
     type: 'TOGGLE_CHECKBOX',
-    productData: productData,
+    sku: sku,
     checked: checked
 });
 

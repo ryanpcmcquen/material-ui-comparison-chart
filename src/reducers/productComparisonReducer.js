@@ -1,25 +1,28 @@
+import data from '../data';
+
 const productComparisonReducer = (state = {}, action) => {
-    let productData = (state.productData && { ...state.productData }) || {};
+    let productData = state.productData || {};
 
     switch (action.type) {
         case 'REMOVE_PRODUCT':
-            delete productData[action.productData.sku];
+            delete productData[action.sku];
+
             return {
-                ...state,
-                productData: productData
+                productData: productData,
+                ...state
             };
 
         case 'TOGGLE_CHECKBOX':
             if (action.checked) {
-                productData[action.productData.sku] = action.productData;
-                productData[action.productData.sku].checked = action.checked;
+                productData[action.sku] = data[action.sku];
+                productData[action.sku].checked = action.checked;
             } else {
-                delete productData[action.productData.sku];
+                delete productData[action.sku];
             }
 
             return {
-                ...state,
-                productData: productData
+                productData: productData,
+                ...state
             };
 
         default:

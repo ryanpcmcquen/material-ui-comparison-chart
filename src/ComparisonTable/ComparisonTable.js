@@ -39,11 +39,11 @@ let ComparisonTable = props => {
                 <TableHead>
                     <TableRow>
                         <TableCell>Products</TableCell>
-                        {props.productData &&
-                            Object.keys(props.productData).map((sku, index) => {
+                        {props.skus &&
+                            props.skus.map((sku, index) => {
                                 const product = props.productData[sku];
                                 return (
-                                    <TableCell>
+                                    <TableCell key={index}>
                                         <img
                                             alt={product.name}
                                             style={imageStyles}
@@ -59,20 +59,18 @@ let ComparisonTable = props => {
                     <TableRow>
                         <TableCell>{sectionZero}</TableCell>
                     </TableRow>
-                    {attributes.map(attribute => (
-                        <TableRow>
+                    {attributes.map((attribute, index) => (
+                        <TableRow key={index}>
                             <TableCell>{attribute}</TableCell>
-                            {props.productData &&
-                                Object.keys(props.productData).map(
-                                    (sku, index) => {
-                                        const product = props.productData[sku];
-                                        return (
-                                            <TableCell>
-                                                {product[attribute]}
-                                            </TableCell>
-                                        );
-                                    }
-                                )}
+                            {props.skus &&
+                                props.skus.map((sku, index) => {
+                                    const product = props.productData[sku];
+                                    return (
+                                        <TableCell key={index}>
+                                            {product[attribute]}
+                                        </TableCell>
+                                    );
+                                })}
                         </TableRow>
                     ))}
                 </TableBody>
@@ -81,11 +79,12 @@ let ComparisonTable = props => {
     );
 };
 
-ComparisonTable = connect((state, ownProps) => {
-    return {
-        productData: state.productComparisonReducer.productData,
-        ...ownProps
-    };
-})(ComparisonTable);
+ComparisonTable = connect((state, ownProps) => ({
+    productData: state.productComparisonReducer.productData,
+    skus:
+        state.productComparisonReducer.productData &&
+        Object.keys(state.productComparisonReducer.productData),
+    ...ownProps
+}))(ComparisonTable);
 
 export default ComparisonTable;
