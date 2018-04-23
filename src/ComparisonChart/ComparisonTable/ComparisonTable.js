@@ -2,18 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
-    AppBar,
     Badge,
     Button,
     Dialog,
-    IconButton,
     Paper,
     Table,
     TableBody,
     TableCell,
     TableHead,
-    TableRow,
-    Toolbar
+    TableRow
 } from 'material-ui';
 
 import { Cancel as CancelIcon } from 'material-ui-icons';
