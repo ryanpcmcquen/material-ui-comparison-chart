@@ -15,6 +15,8 @@ import {
 
 import { Cancel as CancelIcon } from 'material-ui-icons';
 
+import { Slide } from 'material-ui/transitions';
+
 const imageStyles = {
     width: '90px',
     display: 'block'
@@ -29,6 +31,8 @@ const tableModels = {
         Features: ['Blends', 'Blade type']
     }
 };
+
+const Transition = props => <Slide direction="up" timeout={5000} {...props} />;
 
 class ComparisonTable extends React.Component {
     state = {
@@ -64,6 +68,7 @@ class ComparisonTable extends React.Component {
                     fullScreen
                     open={this.state.open}
                     onClose={this.handleClose}
+                    transition={Transition}
                 >
                     <Paper style={{ marginTop: '10px' }}>
                         <Badge

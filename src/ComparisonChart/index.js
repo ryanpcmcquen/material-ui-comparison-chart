@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import CompareCheckbox from './CompareCheckbox/CompareCheckbox';
 import CompareBar from './CompareBar/CompareBar';
-import ComparisonTable from './ComparisonTable/ComparisonTable';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
