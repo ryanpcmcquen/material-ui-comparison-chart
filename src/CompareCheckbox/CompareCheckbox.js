@@ -29,9 +29,7 @@ let CompareCheckbox = props => (
                         );
                     }}
                     checked={
-                        (props.currentProducts &&
-                            props.currentProducts.hasOwnProperty(props.sku)) ||
-                        false
+                        (props.skus && props.skus.includes(props.sku)) || false
                     }
                 />
             }
@@ -45,7 +43,10 @@ CompareCheckbox = connect((state, ownProps) => ({
     // This can be removed once the image is removed.
     productData: data[ownProps.sku],
 
-    currentProducts: state.productComparisonReducer.productData,
+    // HACK:
+    // Using the direct object keeps the component from updating when
+    // other components update the Redux store, so for now, we
+    // convert it to an array.
     skus:
         state.productComparisonReducer.productData &&
         Object.keys(state.productComparisonReducer.productData),

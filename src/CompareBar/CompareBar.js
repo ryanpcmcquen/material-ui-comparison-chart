@@ -11,6 +11,11 @@ import { actionRemoveProduct } from '../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
 let CompareBar = props => {
+    // Fill the array given the number of items
+    // specified by our props. If skus exist,
+    // we populate an array with those,
+    // otherwise we fill the array with
+    // the indices.
     const skus = Array(props.numberOfItems)
         .fill()
         .map((ignore, index) => (props.skus && props.skus[index]) || index);
@@ -64,6 +69,14 @@ let CompareBar = props => {
 };
 CompareBar = connect((state, ownProps) => ({
     productData: state.productComparisonReducer.productData,
+    // HACK:
+    // You're probably thinking that `productData`
+    // could be used to form the `skus` array inside
+    // of the component itself. The problem is that
+    // without the `skus` array attached here,
+    // the component does not seem to be connected
+    // to dispatched actions of the Redux
+    // store.
     skus:
         state.productComparisonReducer.productData &&
         Object.keys(state.productComparisonReducer.productData),
