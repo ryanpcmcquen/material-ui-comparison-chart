@@ -71,7 +71,7 @@ class ComparisonTable extends React.Component {
                             onClick={this.handleClose}
                             style={{
                                 cursor: 'pointer',
-                                position: 'fixed',
+                                position: 'absolute',
                                 right: '15px',
                                 top: '15px',
                                 width: '100%'
