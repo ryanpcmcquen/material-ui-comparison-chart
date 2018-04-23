@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import {
     AppBar,
+    Badge,
     Button,
     Dialog,
     IconButton,
@@ -15,7 +16,7 @@ import {
     Toolbar
 } from 'material-ui';
 
-import { Close as CloseIcon } from 'material-ui-icons';
+import { Cancel as CancelIcon } from 'material-ui-icons';
 
 const imageStyles = {
     width: '90px',
@@ -67,59 +68,62 @@ class ComparisonTable extends React.Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                 >
-                    <AppBar style={{ position: 'relative' }}>
-                        <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                onClick={this.handleClose}
-                                aria-label="Close"
-                            >
-                                <CloseIcon />
-                            </IconButton>
-                        </Toolbar>
-                    </AppBar>
-
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Products</TableCell>
-                                {props.skus &&
-                                    props.skus.map((sku, index) => {
-                                        const product = props.productData[sku];
-                                        return (
-                                            <TableCell key={index}>
-                                                <img
-                                                    alt={product.name}
-                                                    style={imageStyles}
-                                                    src={product.image}
-                                                />
-                                                {product.name}
-                                            </TableCell>
-                                        );
-                                    })}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell>{sectionZero}</TableCell>
-                            </TableRow>
-                            {attributes.map((attribute, index) => (
-                                <TableRow key={index}>
-                                    <TableCell>{attribute}</TableCell>
-                                    {props.skus &&
-                                        props.skus.map((sku, index) => {
-                                            const product =
-                                                props.productData[sku];
-                                            return (
-                                                <TableCell key={index}>
-                                                    {product[attribute]}
-                                                </TableCell>
-                                            );
-                                        })}
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                    <Paper style={{ marginTop: '10px' }}>
+                        <Badge
+                            badgeContent={<CancelIcon />}
+                            onClick={this.handleClose}
+                            style={{
+                                cursor: 'pointer',
+                                position: 'fixed',
+                                right: '15px',
+                                top: '15px',
+                                width: '100%'
+                            }}
+                        >
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Products</TableCell>
+                                        {props.skus &&
+                                            props.skus.map((sku, index) => {
+                                                const product =
+                                                    props.productData[sku];
+                                                return (
+                                                    <TableCell key={index}>
+                                                        <img
+                                                            alt={product.name}
+                                                            style={imageStyles}
+                                                            src={product.image}
+                                                        />
+                                                        {product.name}
+                                                    </TableCell>
+                                                );
+                                            })}
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell>{sectionZero}</TableCell>
+                                    </TableRow>
+                                    {attributes.map((attribute, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell>{attribute}</TableCell>
+                                            {props.skus &&
+                                                props.skus.map((sku, index) => {
+                                                    const product =
+                                                        props.productData[sku];
+                                                    return (
+                                                        <TableCell key={index}>
+                                                            {product[attribute]}
+                                                        </TableCell>
+                                                    );
+                                                })}
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </Badge>
+                    </Paper>
                 </Dialog>
             </React.Fragment>
         );
