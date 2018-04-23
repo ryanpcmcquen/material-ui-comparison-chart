@@ -7,6 +7,7 @@ import {
     Paper
 } from 'material-ui';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from 'material-ui-icons';
+import ComparisonTable from '../ComparisonTable//ComparisonTable';
 import { actionRemoveProduct } from '../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
@@ -21,8 +22,17 @@ let CompareBar = props => {
         .map((ignore, index) => (props.skus && props.skus[index]) || index);
 
     return (
-        <Paper style={{ paddingBottom: '24px' }}>
+        <Paper
+            style={{
+                paddingBottom: '24px',
+                position: 'fixed',
+                bottom: 0,
+                width: '100%'
+            }}
+        >
             <BottomNavigation showLabels>
+                <ComparisonTable type="cutlery" />
+
                 {skus &&
                     skus.map((sku, index) => {
                         const product =

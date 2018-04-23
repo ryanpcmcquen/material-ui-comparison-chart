@@ -29,9 +29,6 @@ const App = () => (
                 // TODO: Take number of items that can be compared.
             }
             <CompareBar numberOfItems={3} />
-            <br />
-            <br />
-            <ComparisonTable type="cutlery" />
         </div>
     </Provider>
 );
