@@ -11,18 +11,17 @@ import { actionRemoveProduct } from '../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
 let CompareBar = props => {
-    const skus =
-        props.skus &&
-        Array(props.numberOfItems)
-            .fill()
-            .map((ignore, index) => props.skus[index] || index);
+    const skus = Array(props.numberOfItems)
+        .fill()
+        .map((ignore, index) => (props.skus && props.skus[index]) || index);
 
     return (
         <Paper style={{ paddingBottom: '24px' }}>
             <BottomNavigation showLabels>
-                {(skus &&
+                {skus &&
                     skus.map((sku, index) => {
-                        const product = props.productData[sku] || index;
+                        const product =
+                            (sku.length && props.productData[sku]) || index;
 
                         return (
                             <BottomNavigationAction
@@ -58,16 +57,7 @@ let CompareBar = props => {
                                 }
                             />
                         );
-                    })) ||
-                    Array(props.numberOfItems)
-                        .fill()
-                        .map((ignore, index) => (
-                            <BottomNavigationAction
-                                key={index}
-                                label={`Item #${index + 1}`}
-                                icon={<AddBoxIcon style={{ fontSize: 50 }} />}
-                            />
-                        ))}
+                    })}
             </BottomNavigation>
         </Paper>
     );

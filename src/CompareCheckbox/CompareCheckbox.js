@@ -28,6 +28,11 @@ let CompareCheckbox = props => (
                             actionToggleCheckbox(props.sku, checked)
                         );
                     }}
+                    checked={
+                        (props.currentProducts &&
+                            props.currentProducts.hasOwnProperty(props.sku)) ||
+                        false
+                    }
                 />
             }
             label="Compare"
@@ -36,13 +41,6 @@ let CompareCheckbox = props => (
 );
 
 CompareCheckbox = connect((state, ownProps) => ({
-    checked:
-        (state.productComparisonReducer.productData &&
-            state.productComparisonReducer.productData.hasOwnProperty(
-                ownProps.sku
-            )) ||
-        false,
-
     // TEMP:
     // This can be removed once the image is removed.
     productData: data[ownProps.sku],

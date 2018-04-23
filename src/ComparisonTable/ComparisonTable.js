@@ -25,8 +25,6 @@ const tableModels = {
     }
 };
 
-// TODO:
-// Use the data model rather than hard coding attributes.
 let ComparisonTable = props => {
     const sectionZero = Object.keys(tableModels[props.type])[0];
 
