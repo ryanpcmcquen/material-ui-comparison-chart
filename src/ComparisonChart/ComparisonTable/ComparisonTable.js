@@ -3,19 +3,26 @@ import { connect } from 'react-redux';
 import sortSkus from '../utils/sortSkus';
 
 import {
+    AppBar,
     Badge,
     Button,
     Dialog,
+    IconButton,
     Paper,
     Slide,
     Table,
     TableBody,
     TableCell,
     TableHead,
-    TableRow
+    TableRow,
+    Toolbar
 } from 'material-ui';
 
-import { Cancel as CancelIcon } from '@material-ui/icons';
+import {
+    Cancel as CancelIcon,
+    Close as CloseIcon,
+    PlayForWork as PlayForWorkIcon
+} from '@material-ui/icons';
 
 const imageStyles = {
     width: '90px',
@@ -32,7 +39,7 @@ const tableModels = {
     }
 };
 
-const Transition = props => <Slide direction="up" timeout={10000} {...props} />;
+const Transition = props => <Slide direction="up" {...props} />;
 
 class ComparisonTable extends React.Component {
     state = {
@@ -66,66 +73,57 @@ class ComparisonTable extends React.Component {
 
                 <Dialog
                     fullScreen
+                    // maxWidth="xl"
                     open={this.state.open}
                     onClose={this.handleClose}
                     transition={Transition}
+                    transitionDuration={500}
                 >
-                    <Paper style={{ marginTop: '10px' }}>
-                        <Badge
-                            badgeContent={<CancelIcon />}
-                            onClick={this.handleClose}
-                            style={{
-                                cursor: 'pointer',
-                                position: 'absolute',
-                                right: '15px',
-                                top: '15px',
-                                width: '100%'
-                            }}
-                        >
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Products</TableCell>
-                                        {props.skus &&
-                                            props.skus.map((sku, index) => {
-                                                const product =
-                                                    props.productData[sku];
-                                                return (
-                                                    <TableCell key={index}>
-                                                        <img
-                                                            alt={product.name}
-                                                            style={imageStyles}
-                                                            src={product.image}
-                                                        />
-                                                        {product.name}
-                                                    </TableCell>
-                                                );
-                                            })}
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell>{sectionZero}</TableCell>
-                                    </TableRow>
-                                    {attributes.map((attribute, index) => (
-                                        <TableRow key={index}>
-                                            <TableCell>{attribute}</TableCell>
-                                            {props.skus &&
-                                                props.skus.map((sku, index) => {
-                                                    const product =
-                                                        props.productData[sku];
-                                                    return (
-                                                        <TableCell key={index}>
-                                                            {product[attribute]}
-                                                        </TableCell>
-                                                    );
-                                                })}
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </Badge>
-                    </Paper>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <Button onClick={this.handleClose}>
+                                        <PlayForWorkIcon />Hide chart
+                                    </Button>
+                                </TableCell>
+                                {props.skus &&
+                                    props.skus.map((sku, index) => {
+                                        const product = props.productData[sku];
+                                        return (
+                                            <TableCell key={index}>
+                                                <img
+                                                    alt={product.name}
+                                                    style={imageStyles}
+                                                    src={product.image}
+                                                />
+                                                {product.name}
+                                            </TableCell>
+                                        );
+                                    })}
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>{sectionZero}</TableCell>
+                            </TableRow>
+                            {attributes.map((attribute, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{attribute}</TableCell>
+                                    {props.skus &&
+                                        props.skus.map((sku, index) => {
+                                            const product =
+                                                props.productData[sku];
+                                            return (
+                                                <TableCell key={index}>
+                                                    {product[attribute]}
+                                                </TableCell>
+                                            );
+                                        })}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
                 </Dialog>
             </React.Fragment>
         );
