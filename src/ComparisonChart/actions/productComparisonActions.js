@@ -1,3 +1,7 @@
+const actionRemoveAll = sku => ({
+    type: 'REMOVE_ALL'
+});
+
 const actionRemoveProduct = sku => ({
     type: 'REMOVE_PRODUCT',
     sku: sku
@@ -9,4 +13,4 @@ const actionToggleCheckbox = (sku, checked) => ({
     checked: checked
 });
 
-export { actionRemoveProduct, actionToggleCheckbox };
+export { actionRemoveAll, actionRemoveProduct, actionToggleCheckbox };

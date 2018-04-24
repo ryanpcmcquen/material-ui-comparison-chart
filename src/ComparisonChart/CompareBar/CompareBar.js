@@ -25,13 +25,13 @@ let CompareBar = props => {
     return (
         <Paper
             style={{
-                paddingBottom: '24px',
+                paddingBottom: '48px',
                 position: 'fixed',
                 bottom: 0,
                 width: '100%'
             }}
         >
-            <BottomNavigation showLabels>
+            <BottomNavigation showLabels style={{ marginTop: '10px' }}>
                 <ComparisonTable type="cutlery" />
 
                 {skus &&

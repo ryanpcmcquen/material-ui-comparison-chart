@@ -1,28 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import sortSkus from '../utils/sortSkus';
+import { actionRemoveAll } from '../actions/productComparisonActions';
 
 import {
-    AppBar,
-    Badge,
     Button,
     Dialog,
-    IconButton,
-    Paper,
     Slide,
     Table,
     TableBody,
     TableCell,
     TableHead,
     TableRow,
-    Toolbar
+    Typography
 } from 'material-ui';
 
-import {
-    Cancel as CancelIcon,
-    Close as CloseIcon,
-    PlayForWork as PlayForWorkIcon
-} from '@material-ui/icons';
+import { PlayForWork as PlayForWorkIcon } from '@material-ui/icons';
 
 const imageStyles = {
     width: '90px',
@@ -70,6 +63,24 @@ class ComparisonTable extends React.Component {
                 >
                     COMPARE
                 </Button>
+                <Typography
+                    style={{
+                        margin: '10px 30px',
+                        width: '250px',
+                        textAlign: 'left'
+                    }}
+                >
+                    Select up to 3 products to compare and find the best one for
+                    you.
+                    <br />
+                    <Button
+                        onClick={(event, checked) => {
+                            props.dispatch(actionRemoveAll());
+                        }}
+                    >
+                        REMOVE ALL
+                    </Button>
+                </Typography>
 
                 <Dialog
                     fullScreen
