@@ -1,4 +1,7 @@
 import React from 'react';
+import { actionRemoveProduct } from '../actions/productComparisonActions';
+import sortSkus from '../utils/sortSkus';
+import { connect } from 'react-redux';
 
 import {
     Badge,
@@ -7,9 +10,7 @@ import {
     Paper
 } from 'material-ui';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from 'material-ui-icons';
-import ComparisonTable from '../ComparisonTable//ComparisonTable';
-import { actionRemoveProduct } from '../actions/productComparisonActions';
-import { connect } from 'react-redux';
+import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
 let CompareBar = props => {
     // Fill the array given the number of items
@@ -87,9 +88,7 @@ CompareBar = connect((state, ownProps) => ({
     // the component does not seem to be connected
     // to dispatched actions of the Redux
     // store.
-    skus:
-        state.productComparisonReducer.productData &&
-        Object.keys(state.productComparisonReducer.productData),
+    skus: sortSkus(state.productComparisonReducer.productData),
     ...ownProps
 }))(CompareBar);
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import sortSkus from '../utils/sortSkus';
 
 import {
     Badge,
@@ -134,9 +135,7 @@ class ComparisonTable extends React.Component {
 
 ComparisonTable = connect((state, ownProps) => ({
     productData: state.productComparisonReducer.productData,
-    skus:
-        state.productComparisonReducer.productData &&
-        Object.keys(state.productComparisonReducer.productData),
+    skus: sortSkus(state.productComparisonReducer.productData),
     ...ownProps
 }))(ComparisonTable);
 

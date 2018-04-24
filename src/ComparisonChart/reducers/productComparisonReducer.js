@@ -16,6 +16,7 @@ const productComparisonReducer = (state = {}, action) => {
             if (action.checked) {
                 productData[action.sku] = data[action.sku];
                 productData[action.sku].checked = action.checked;
+                productData[action.sku].timeAdded = Date.now();
             } else {
                 delete productData[action.sku];
             }
