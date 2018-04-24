@@ -32,15 +32,7 @@ const tableModels = {
     }
 };
 
-const Transition = props => (
-    <Slide
-        direction="up"
-        timeout={10000}
-        mountOnEnter
-        unmountOnExit
-        {...props}
-    />
-);
+const Transition = props => <Slide direction="up" timeout={10000} {...props} />;
 
 class ComparisonTable extends React.Component {
     state = {
