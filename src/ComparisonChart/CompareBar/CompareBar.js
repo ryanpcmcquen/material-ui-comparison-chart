@@ -9,7 +9,7 @@ import {
     BottomNavigationAction,
     Paper
 } from 'material-ui';
-import { AddBox as AddBoxIcon, Cancel as CancelIcon } from 'material-ui-icons';
+import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '@material-ui/icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
 let CompareBar = props => {

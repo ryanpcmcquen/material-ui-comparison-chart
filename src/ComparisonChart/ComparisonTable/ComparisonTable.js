@@ -7,6 +7,7 @@ import {
     Button,
     Dialog,
     Paper,
+    Slide,
     Table,
     TableBody,
     TableCell,
@@ -14,9 +15,7 @@ import {
     TableRow
 } from 'material-ui';
 
-import { Cancel as CancelIcon } from 'material-ui-icons';
-
-import { Slide } from 'material-ui/transitions';
+import { Cancel as CancelIcon } from '@material-ui/icons';
 
 const imageStyles = {
     width: '90px',
@@ -33,7 +32,15 @@ const tableModels = {
     }
 };
 
-const Transition = props => <Slide direction="up" timeout={5000} {...props} />;
+const Transition = props => (
+    <Slide
+        direction="up"
+        timeout={10000}
+        mountOnEnter
+        unmountOnExit
+        {...props}
+    />
+);
 
 class ComparisonTable extends React.Component {
     state = {
