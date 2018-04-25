@@ -125,9 +125,10 @@ class ComparisonTable extends React.Component {
                                         .map(
                                             (ignore, index) =>
                                                 index ? (
-                                                    <TableCell />
+                                                    <TableCell key={index} />
                                                 ) : (
                                                     <TableCell
+                                                        key={index}
                                                         style={{
                                                             color: '#ffffff'
                                                         }}

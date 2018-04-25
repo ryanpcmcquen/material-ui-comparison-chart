@@ -32,4 +32,6 @@ const App = () => (
     </Provider>
 );
 
+export default App;
+
 render(<App />, document.querySelector('.app'));
