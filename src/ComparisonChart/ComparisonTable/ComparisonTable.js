@@ -24,7 +24,7 @@ const imageStyles = {
 
 const tableModels = {
     cutlery: {
-        Dimensions: ['Blade length', 'Total length', 'Full Tang value']
+        Dimensions: ['Blade length', 'Total length', 'Full Tang value', 'Foo']
     },
     // This is just an example of another type:
     appliance: {
@@ -48,8 +48,8 @@ class ComparisonTable extends React.Component {
     };
     render() {
         const props = this.props;
-        const sectionZero = Object.keys(tableModels[props.type])[0];
 
+        const sections = Object.keys(tableModels[props.type]);
         const attributes =
             tableModels[props.type][Object.keys(tableModels[props.type])[0]];
 
@@ -84,7 +84,6 @@ class ComparisonTable extends React.Component {
 
                 <Dialog
                     fullScreen
-                    // maxWidth="xl"
                     open={this.state.open}
                     onClose={this.handleClose}
                     transition={Transition}
@@ -115,11 +114,38 @@ class ComparisonTable extends React.Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell>{sectionZero}</TableCell>
+                            <TableRow
+                                style={{
+                                    backgroundColor: '#111111'
+                                }}
+                            >
+                                {props.skus &&
+                                    Array(props.skus.length + 1)
+                                        .fill()
+                                        .map(
+                                            (ignore, index) =>
+                                                index ? (
+                                                    <TableCell />
+                                                ) : (
+                                                    <TableCell
+                                                        style={{
+                                                            color: '#ffffff'
+                                                        }}
+                                                    >
+                                                        {sections[index]}
+                                                    </TableCell>
+                                                )
+                                        )}
                             </TableRow>
                             {attributes.map((attribute, index) => (
-                                <TableRow key={index}>
+                                <TableRow
+                                    key={index}
+                                    style={{
+                                        backgroundColor:
+                                            (index === 1 || index % 2 !== 0) &&
+                                            '#eeeeee'
+                                    }}
+                                >
                                     <TableCell>{attribute}</TableCell>
                                     {props.skus &&
                                         props.skus.map((sku, index) => {

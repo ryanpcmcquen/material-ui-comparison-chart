@@ -12,7 +12,8 @@ const data = {
         sku: 2403251,
         'Blade length': `6", 8", 9.5"`,
         'Full Tang value': 'N',
-        'Total length': `12", 13", 15"`
+        'Total length': `12", 13", 15"`,
+        Foo: 'Bar'
     },
     1251230: {
         checked: false,
@@ -21,7 +22,8 @@ const data = {
         sku: 1251230,
         'Blade length': `6", 8", 9.5"`,
         'Full Tang value': 'Y',
-        'Total length': `12", 13", 15"`
+        'Total length': `12", 13", 15"`,
+        Foo: 'Bar'
     },
     227496: {
         checked: false,
@@ -30,7 +32,8 @@ const data = {
         sku: 227496,
         'Blade length': `8", 10"`,
         'Full Tang value': 'Y',
-        'Total length': `14", 16"`
+        'Total length': `14", 16"`,
+        Foo: 'Bar'
     }
 };
 
