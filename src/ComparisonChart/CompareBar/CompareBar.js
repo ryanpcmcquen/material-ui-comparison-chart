@@ -42,7 +42,7 @@ let CompareBar = props => {
                         return (
                             <BottomNavigationAction
                                 key={index}
-                                label={`Item #${index + 1}`}
+                                label={product.name || `Item #${index + 1}`}
                                 icon={
                                     <React.Fragment>
                                         {sku.length ? (
