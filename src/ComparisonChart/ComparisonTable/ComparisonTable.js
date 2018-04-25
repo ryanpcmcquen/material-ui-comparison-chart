@@ -24,9 +24,9 @@ const imageStyles = {
 
 const tableModels = {
     cutlery: {
-        Dimensions: ['Blade length', 'Total length', 'Full Tang value', 'Foo']
+        Dimensions: ['Blade length', 'Total length', 'Full Tang value']
     },
-    // This is just an example of another type:
+    // This is just an example of another possible type:
     appliance: {
         Features: ['Blends', 'Blade type']
     }

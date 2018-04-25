@@ -43,6 +43,8 @@ let CompareBar = props => {
                             <BottomNavigationAction
                                 key={index}
                                 label={product.name || `Item #${index + 1}`}
+                                // Disable the ripple animation if the item box is empty:
+                                disableRipple={!sku.length}
                                 icon={
                                     <React.Fragment>
                                         {sku.length ? (
